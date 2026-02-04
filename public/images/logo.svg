@@ -1,0 +1,8 @@
+<svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="48" fill="white"/>
+  <text x="4" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1a1a1a">DW</text>
+  <text x="28" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#e53935">O</text>
+  <text x="40" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1a1a1a">M</text>
+  <text x="4" y="40" font-family="Arial, sans-serif" font-size="8" fill="#1a1a1a">by</text>
+  <circle cx="18" cy="38" r="4" fill="#e53935"/>
+</svg>

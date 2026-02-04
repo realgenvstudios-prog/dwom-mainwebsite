@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+export const metadata: Metadata = {
+  title: "DWOM - Fresh Local Ingredients, Faster than a text",
+  description: "Buy Ghanaian market items using English, Twi, or shorthand. From Koobi to Ayoyo, we understand your list and deliver it instantly.",
+  keywords: ["grocery", "Ghana", "delivery", "fresh", "local", "ingredients", "market"],
+  openGraph: {
+    title: "DWOM - Fresh Local Ingredients",
+    description: "Buy Ghanaian market items using English, Twi, or shorthand.",
+    type: "website",
+    locale: "en_GH",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
+}

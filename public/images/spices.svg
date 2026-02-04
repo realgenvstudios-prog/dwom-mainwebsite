@@ -1,0 +1,9 @@
+<svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="150" fill="#d4a574"/>
+  <rect x="10" y="10" width="180" height="130" rx="8" fill="#e5b88a"/>
+  <!-- Spice powder mound -->
+  <ellipse cx="100" cy="100" rx="70" ry="30" fill="#c62828"/>
+  <ellipse cx="100" cy="95" rx="65" ry="25" fill="#e53935"/>
+  <ellipse cx="100" cy="90" rx="55" ry="18" fill="#ff6b6b"/>
+  <text x="100" y="140" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">spices.png</text>
+</svg>
