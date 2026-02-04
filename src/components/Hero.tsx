@@ -44,27 +44,22 @@ export default function Hero() {
     {
       src: '/images/vegetables-1.png',
       alt: 'Dried fish',
-      className: 'left-16 top-20 w-64 h-44 -rotate-6',
+      className: 'left-0 md:left-4 lg:left-8 top-8 md:top-12 lg:top-20 w-40 h-32 md:w-56 md:h-40 lg:w-64 lg:h-44 -rotate-6',
     },
     {
       src: '/images/onions.png',
       alt: 'Onions',
-      className: 'left-28 bottom-4 w-48 h-36 rotate-6',
+      className: 'left-0 md:left-4 lg:left-8 bottom-4 md:bottom-8 lg:bottom-12 w-40 h-32 md:w-48 md:h-36 lg:w-48 lg:h-36 rotate-6',
     },
     {
       src: '/images/peppers.png',
       alt: 'Peppers',
-      className: 'right-0 top-0 w-56 h-44 rotate-6',
-    },
-    {
-      src: '/images/spices.png',
-      alt: 'Spices',
-      className: 'right-0 top-1/2 -translate-y-1/2 w-52 h-40 -rotate-3',
+      className: 'right-0 md:right-4 lg:right-8 top-8 md:top-12 lg:top-0 w-40 h-32 md:w-56 md:h-40 lg:w-56 lg:h-44 rotate-6',
     },
     {
       src: '/images/yam.png',
       alt: 'Yam',
-      className: 'right-4 bottom-0 w-56 h-44 rotate-6',
+      className: 'right-0 md:right-4 lg:right-8 bottom-4 md:bottom-8 lg:bottom-0 w-40 h-32 md:w-56 md:h-40 lg:w-56 lg:h-44 rotate-6',
     },
   ];
 
@@ -156,21 +151,21 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
-                className="md:hidden flex flex-col gap-3 relative z-20 flex-shrink-0"
+                className="md:hidden flex flex-col gap-2 relative z-20 flex-shrink-0"
                 id="download-mobile"
               >
                 <motion.a
                   href="#"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 bg-black text-white px-5 py-2.5 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm"
+                  className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
                 >
-                  <Apple className="w-5 h-5 flex-shrink-0" />
+                  <Apple className="w-4 h-4 flex-shrink-0" />
                   <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wide opacity-90 leading-tight">
+                    <div className="text-[7px] uppercase tracking-wide opacity-90 leading-tight">
                       Download on the
                     </div>
-                    <div className="text-base font-bold -mt-0.5">App Store</div>
+                    <div className="text-sm font-bold -mt-0.5">App Store</div>
                   </div>
                 </motion.a>
 
@@ -178,14 +173,14 @@ export default function Hero() {
                   href="#"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 bg-black text-white px-5 py-2.5 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm"
+                  className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
                 >
-                  <Play className="w-5 h-5 fill-current flex-shrink-0" />
+                  <Play className="w-4 h-4 fill-current flex-shrink-0" />
                   <div className="text-left">
-                    <div className="text-[8px] uppercase tracking-wide opacity-90 leading-tight">
+                    <div className="text-[7px] uppercase tracking-wide opacity-90 leading-tight">
                       Get it on
                     </div>
-                    <div className="text-base font-bold -mt-0.5">GOOGLE PLAY</div>
+                    <div className="text-sm font-bold -mt-0.5">GOOGLE PLAY</div>
                   </div>
                 </motion.a>
               </motion.div>
@@ -212,7 +207,7 @@ export default function Hero() {
             {ingredientImages.map((image) => (
               <div
                 key={image.src}
-                className={`absolute opacity-100 pointer-events-none hidden md:block ${image.className}`}
+                className={`absolute opacity-100 pointer-events-none ${image.className}`}
               >
                 <Image src={image.src} alt={image.alt} fill className="object-contain" />
               </div>
