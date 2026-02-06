@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: "DWOM - Fresh Local Ingredients, Faster than a text",
   description: "Buy Ghanaian market items using English, Twi, or shorthand. From Koobi to Ayoyo, we understand your list and deliver it instantly.",
   keywords: ["grocery", "Ghana", "delivery", "fresh", "local", "ingredients", "market"],
+  icons: {
+    icon: [
+      { url: "/images/icon.png", type: "image/png", sizes: "1024x1024" }
+    ],
+    shortcut: "/images/icon.png",
+    apple: "/images/icon.png",
+  },
   openGraph: {
     title: "DWOM - Fresh Local Ingredients",
     description: "Buy Ghanaian market items using English, Twi, or shorthand.",

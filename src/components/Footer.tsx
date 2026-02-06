@@ -65,6 +65,7 @@ const footerLinks = [
   { name: 'Terms & Conditions', href: '/terms' },
   { name: 'Privacy Policy', href: '/privacy' },
   { name: 'Support', href: '/support' },
+  { name: 'Delete Account', href: '/delete-account' },
 ];
 
 export default function Footer() {
