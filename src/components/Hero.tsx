@@ -1,10 +1,20 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Apple, Play } from 'lucide-react';
 
 export default function Hero() {
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleStoreClick = (e: React.MouseEvent, store: 'apple' | 'google') => {
+    e.preventDefault();
+    setToastMessage(store === 'apple' ? 'Coming soon on the App Store' : 'Coming soon on the Play Store');
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -73,6 +83,17 @@ export default function Hero() {
             <div className="flex gap-4 items-start md:block lg:block">
               {/* Heading and Description */}
               <div>
+                {/* Launching Soon badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-1.5 bg-[#e53935]/10 text-[#e53935] text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#e53935] animate-pulse" />
+                  Launching Soon
+                </motion.div>
+
                 <motion.h1
                   className="text-4xl md:text-5xl lg:text-6xl font-bold italic leading-tight"
                   initial="hidden"
@@ -156,6 +177,7 @@ export default function Hero() {
               >
                 <motion.a
                   href="#"
+                  onClick={(e) => handleStoreClick(e, 'apple')}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
@@ -171,6 +193,7 @@ export default function Hero() {
 
                 <motion.a
                   href="#"
+                  onClick={(e) => handleStoreClick(e, 'google')}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
@@ -285,25 +308,23 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Mobile Feature Cards - shown only on smaller screens */}
-          <div className="lg:hidden grid grid-cols-2 gap-4 mt-8">
-            {featureCards.map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                className="bg-white rounded-2xl p-4 shadow-lg relative overflow-hidden"
-              >
-                <h3 className="font-bold text-sm text-[#1a1a1a]">
-                  {card.title}
-                </h3>
-                <p className="text-xs text-gray-500 mt-1">{card.description}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
+
+      {/* Coming Soon Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 rounded-2xl shadow-xl text-sm font-medium whitespace-nowrap"
+          >
+            {toastMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

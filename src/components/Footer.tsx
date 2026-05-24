@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Apple, Play } from 'lucide-react';
 
@@ -34,7 +35,7 @@ const socialLinks = [
   },
   {
     name: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/dwom_gh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
@@ -69,7 +70,18 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleStoreClick = (e: React.MouseEvent, store: 'apple' | 'google') => {
+    e.preventDefault();
+    setToastMessage(store === 'apple' ? 'Coming soon on the App Store' : 'Coming soon on the Play Store');
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
+
   return (
+    <>
     <footer className="bg-white pt-16 pb-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Social Links & App Buttons Row */}
@@ -110,6 +122,7 @@ export default function Footer() {
           >
             <motion.a
               href="#"
+              onClick={(e) => handleStoreClick(e, 'apple')}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-3 bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg"
@@ -125,6 +138,7 @@ export default function Footer() {
 
             <motion.a
               href="#"
+              onClick={(e) => handleStoreClick(e, 'google')}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-3 bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg"
@@ -169,5 +183,21 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
+
+      {/* Coming Soon Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 rounded-2xl shadow-xl text-sm font-medium whitespace-nowrap"
+          >
+            {toastMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
