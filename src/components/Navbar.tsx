@@ -59,12 +59,12 @@ export default function Navbar() {
           whileTap={{ scale: 0.95 }}
           className="hidden md:block"
         >
-          <Link
-            href="#download"
-            className="bg-[#e53935] text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-xs md:text-sm hover:bg-[#c62828] transition-colors duration-300 shadow-lg hover:shadow-xl"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('openBetaModal'))}
+            className="bg-[#e53935] text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-xs md:text-sm hover:bg-[#c62828] transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer"
           >
-            GET APP
-          </Link>
+            REQUEST BETA
+          </button>
         </motion.div>
 
         {/* Hamburger Menu - Mobile Only */}
@@ -103,13 +103,12 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
             className="mt-2"
           >
-            <Link
-              href="#download"
-              className="block w-full bg-[#e53935] text-white px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-[#c62828] transition-colors duration-300 shadow-lg hover:shadow-xl text-center"
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              onClick={() => { window.dispatchEvent(new CustomEvent('openBetaModal')); setMobileMenuOpen(false); }}
+              className="block w-full bg-[#e53935] text-white px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-[#c62828] transition-colors duration-300 shadow-lg hover:shadow-xl text-center cursor-pointer"
             >
-              GET APP
-            </Link>
+              REQUEST BETA
+            </button>
           </motion.div>
         </motion.div>
       )}
