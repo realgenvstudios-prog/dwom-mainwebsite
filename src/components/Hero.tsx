@@ -1,20 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Apple, Play } from 'lucide-react';
 
 export default function Hero() {
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-
-  const handleStoreClick = (e: React.MouseEvent, store: 'apple' | 'google') => {
-    e.preventDefault();
-    setToastMessage(store === 'apple' ? 'Coming soon on the App Store' : 'Coming soon on the Play Store');
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  };
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
@@ -88,10 +77,10 @@ export default function Hero() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-1.5 bg-[#e53935]/10 text-[#e53935] text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                  className="inline-flex items-center gap-1.5 bg-white border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-3 shadow-sm"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#e53935] animate-pulse" />
-                  Launching Soon
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  PRIVATE BETA · 40 SPOTS REMAINING
                 </motion.div>
 
                 <motion.h1
@@ -123,90 +112,33 @@ export default function Hero() {
                   transition={{ delay: 0.7, duration: 0.6 }}
                   className="mt-6 text-gray-600 text-base md:text-lg max-w-md"
                 >
-                  Buy Ghanaian market items using English, Twi, or shorthand. From
-                  Koobi to Ayoyo, we understand your list and deliver it instantly
+                  DWOM is currently a by invitation grocery service delivering Ghanaian market staples from Koobi to Ayoyo straight to your gate in Accra. We are currently in a private beta for our first 50 Founding Members.
                 </motion.p>
 
-                {/* App Store Buttons - Desktop positioning */}
+                {/* Request BETA Access Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.6 }}
-                  className="hidden md:flex mt-8 gap-3 relative md:z-20"
-                  id="download"
+                  className="mt-8 relative z-20"
                 >
-                  <motion.a
-                    href="#"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 bg-black text-white px-5 py-2.5 md:px-6 md:py-3 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm md:text-base"
+                  <motion.button
+                    onClick={() => window.dispatchEvent(new CustomEvent('openBetaModal'))}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center justify-center gap-2 w-auto min-w-[170px] bg-black text-white px-4 py-3 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-sm md:w-full md:min-w-0 md:px-6 md:py-4 md:text-base cursor-pointer"
                   >
-                    <Apple className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
-                    <div className="text-left">
-                      <div className="text-[8px] md:text-[10px] uppercase tracking-wide opacity-90 leading-tight">
-                        Download on the
-                      </div>
-                      <div className="text-base md:text-lg font-bold -mt-0.5">App Store</div>
-                    </div>
-                  </motion.a>
-
-                  <motion.a
-                    href="#"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 bg-black text-white px-5 py-2.5 md:px-6 md:py-3 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-sm md:text-base"
-                  >
-                    <Play className="w-5 h-5 md:w-6 md:h-6 fill-current flex-shrink-0" />
-                    <div className="text-left">
-                      <div className="text-[8px] md:text-[10px] uppercase tracking-wide opacity-90 leading-tight">
-                        Get it on
-                      </div>
-                      <div className="text-base md:text-lg font-bold -mt-0.5">GOOGLE PLAY</div>
-                    </div>
-                  </motion.a>
+                    Request BETA Access →
+                  </motion.button>
+                  <p className="mt-3 text-xs sm:text-sm text-gray-600 max-w-[18rem] md:max-w-md">
+                    <span className="block font-bold text-gray-900">Beta members are onboarded directly by Us.</span>
+                    <span className="block md:inline">
+                      DWOM will launch publicly on the App Store &amp; Google Play after the founding cohort closes.
+                    </span>
+                    <span className="block">Applications reviewed within 24 hours.</span>
+                  </p>
                 </motion.div>
               </div>
-
-              {/* App Store Buttons - Mobile positioning (on right) */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="md:hidden flex flex-col gap-2 relative z-20 flex-shrink-0"
-                id="download-mobile"
-              >
-                <motion.a
-                  href="#"
-                  onClick={(e) => handleStoreClick(e, 'apple')}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
-                >
-                  <Apple className="w-4 h-4 flex-shrink-0" />
-                  <div className="text-left">
-                    <div className="text-[7px] uppercase tracking-wide opacity-90 leading-tight">
-                      Download on the
-                    </div>
-                    <div className="text-sm font-bold -mt-0.5">App Store</div>
-                  </div>
-                </motion.a>
-
-                <motion.a
-                  href="#"
-                  onClick={(e) => handleStoreClick(e, 'google')}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap text-xs"
-                >
-                  <Play className="w-4 h-4 fill-current flex-shrink-0" />
-                  <div className="text-left">
-                    <div className="text-[7px] uppercase tracking-wide opacity-90 leading-tight">
-                      Get it on
-                    </div>
-                    <div className="text-sm font-bold -mt-0.5">GOOGLE PLAY</div>
-                  </div>
-                </motion.a>
-              </motion.div>
             </div>
 
             {/* Decorative Potatoes Image */}
@@ -311,20 +243,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Coming Soon Toast */}
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 rounded-2xl shadow-xl text-sm font-medium whitespace-nowrap"
-          >
-            {toastMessage}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

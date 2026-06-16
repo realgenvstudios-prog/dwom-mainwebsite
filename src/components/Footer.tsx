@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Apple, Play } from 'lucide-react';
 
 const socialLinks = [
   {
@@ -70,18 +68,7 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-
-  const handleStoreClick = (e: React.MouseEvent, store: 'apple' | 'google') => {
-    e.preventDefault();
-    setToastMessage(store === 'apple' ? 'Coming soon on the App Store' : 'Coming soon on the Play Store');
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  };
-
   return (
-    <>
     <footer className="bg-white pt-16 pb-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Social Links & App Buttons Row */}
@@ -112,45 +99,21 @@ export default function Footer() {
             ))}
           </motion.div>
 
-          {/* App Store Buttons */}
+          {/* Request BETA Access Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex gap-3"
           >
-            <motion.a
-              href="#"
-              onClick={(e) => handleStoreClick(e, 'apple')}
+            <motion.button
+              onClick={() => window.dispatchEvent(new CustomEvent('openBetaModal'))}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 w-auto min-w-[170px] bg-black text-white px-4 py-3 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg font-semibold text-sm md:px-6 md:py-3 md:text-base md:min-w-0 cursor-pointer"
             >
-              <Apple className="w-6 h-6" />
-              <div className="text-left">
-                <div className="text-[9px] uppercase tracking-wide opacity-80">
-                  Download on the
-                </div>
-                <div className="text-base font-semibold -mt-1">App Store</div>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="#"
-              onClick={(e) => handleStoreClick(e, 'google')}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              <Play className="w-6 h-6 fill-current" />
-              <div className="text-left">
-                <div className="text-[9px] uppercase tracking-wide opacity-80">
-                  Get it on
-                </div>
-                <div className="text-base font-semibold -mt-1">GOOGLE PLAY</div>
-              </div>
-            </motion.a>
+              Request BETA Access →
+            </motion.button>
           </motion.div>
         </div>
 
@@ -183,21 +146,5 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
-
-      {/* Coming Soon Toast */}
-      <AnimatePresence>
-        {showToast && (
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 rounded-2xl shadow-xl text-sm font-medium whitespace-nowrap"
-          >
-            {toastMessage}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
   );
 }

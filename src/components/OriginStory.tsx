@@ -2,17 +2,40 @@
 
 import { motion } from 'framer-motion';
 
-const values = [
-  { label: 'Affordable Prices' },
-  { label: 'No Minimum Order' },
-  { label: 'Fast Delivery' },
-  { label: 'Quality Guaranteed' },
-  { label: 'Client Obsessed' },
+const perks = [
+  {
+    emoji: '🎯',
+    title: 'Priority Support — Always',
+    description:
+      'Founding Members get a direct WhatsApp line to the team. Not a chatbot. Not a form. A real person who knows your order history.',
+    featured: true,
+  },
+  {
+    emoji: '🚚',
+    title: 'Free Delivery — For Your First 10 Orders',
+    description:
+      'As a thank-you for helping us build this, Founding Members get free delivery on their first 10 orders. No codes, no conditions, automatic.',
+    featured: false,
+  },
+  {
+    emoji: '📦',
+    title: 'Shape the Product',
+    description:
+      'Your feedback directly influences what we build next, new item categories, delivery windows, subscription options. You vote, we build it.',
+    featured: false,
+  },
+  {
+    emoji: '🥇',
+    title: 'Permanent Founding Member Status',
+    description:
+      'Your profile is marked as a Founding Member for life. A small thing now, meaningful when DWOM is the default way people shop.',
+    featured: false,
+  },
 ];
 
 export default function OriginStory() {
   return (
-    <section className="py-16 px-4 md:px-8 bg-white">
+    <section className="py-20 px-4 md:px-8 bg-white">
       <div className="max-w-2xl mx-auto">
         {/* Label */}
         <motion.p
@@ -22,7 +45,7 @@ export default function OriginStory() {
           transition={{ duration: 0.5 }}
           className="text-[#e53935] font-semibold text-sm uppercase tracking-widest mb-4"
         >
-          Why DWOM Exists
+          Why Private?
         </motion.p>
 
         {/* Headline */}
@@ -33,68 +56,68 @@ export default function OriginStory() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold text-[#1a1a1a] leading-tight mb-6"
         >
-          Born out of a real problem.
+          We are limiting access to{' '}
+          <em className="text-[#e53935] italic">ensure</em>{' '}
+          elite quality.
         </motion.h2>
 
-        {/* Story */}
-        <motion.div
+        {/* Description */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="space-y-4 text-gray-600 text-base leading-relaxed mb-8"
+          className="text-gray-600 text-base md:text-lg leading-relaxed mb-8"
         >
-          <p>
-            Back in university, our founders <span className="font-semibold text-[#1a1a1a]">Ted, Prince, and Gideon</span> kept running into the same frustration getting fresh, affordable groceries was a real hassle. Minimum orders were too high, delivery was slow, and prices felt unpredictable.
-          </p>
-          <p>
-            So they built DWOM. A grocery app made specifically for Ghanaians. Browse our full product catalogue, or simply type your list in English, Twi, or shorthand <span className="font-semibold text-[#1a1a1a]">"2 cups of Ayoyo"</span> or <span className="font-semibold text-[#1a1a1a]">"kontomire for soup"</span> we understand it either way and get it to you fast.
-          </p>
-          <p>
-            No minimum order. No overpriced markups. Just fresh local ingredients, delivered to your gate faster than a text.
-          </p>
-        </motion.div>
+          Most delivery apps scale fast and sacrifice quality. We are taking the opposite approach:{' '}
+          <span className="font-bold text-[#1a1a1a]">
+            50 Founding Members, personally onboarded, hand-delivered
+          </span>{' '}
+          with zero compromise. When the waitlist is full, we close it.
+        </motion.p>
 
-        {/* Founders */}
+        {/* Perks */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
+          {perks.map((perk, index) => (
+            <motion.div
+              key={perk.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * index, duration: 0.5 }}
+              className={`flex items-start gap-3 bg-white rounded-2xl p-4 border ${
+                perk.featured
+                  ? 'border-2 border-[#e53935]'
+                  : 'border border-gray-200'
+              }`}
+            >
+              <span className="text-2xl md:text-3xl flex-shrink-0">{perk.emoji}</span>
+              <div>
+                <h3 className="font-bold text-[#1a1a1a] text-sm md:text-base mb-1">
+                  {perk.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{perk.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="flex items-center gap-3 mb-10"
+          className="mt-10"
         >
-          <div className="flex -space-x-2">
-            {['T', 'P', 'G'].map((initial, i) => (
-              <div
-                key={initial}
-                className="w-9 h-9 rounded-full bg-[#e53935] text-white flex items-center justify-center text-sm font-bold border-2 border-white"
-                style={{ zIndex: 3 - i }}
-              >
-                {initial}
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-gray-500">
-            Founded by <span className="text-[#1a1a1a] font-medium">Ted, Prince & Gideon</span>
-          </p>
-        </motion.div>
-
-        {/* Value Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="flex flex-wrap gap-2"
-        >
-          {values.map((v) => (
-            <span
-              key={v.label}
-              className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full"
+          <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('openBetaModal'))}
+              className="inline-flex items-center justify-center gap-2 w-auto min-w-[170px] bg-black text-white px-4 py-3 rounded-2xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-sm md:w-auto md:min-w-[170px] md:px-8 md:py-4 md:text-base cursor-pointer"
             >
-              {v.label}
-            </span>
-          ))}
+              Request Beta Access →
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </section>
