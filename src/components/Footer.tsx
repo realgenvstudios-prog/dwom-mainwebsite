@@ -41,27 +41,27 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white px-6 pt-12 pb-10 md:px-12 md:pt-16 md:pb-12 lg:px-[70px]">
-      <div className="mx-auto max-w-[1600px]">
+    <footer className="section-x bg-white pt-4 pb-12 md:pb-16">
+      <div className="mx-auto max-w-[1312px]">
         {/* Download */}
-        <h2 className="text-[20px] font-medium tracking-[-0.01em] text-[#111]">Download DWOM</h2>
+        <h2 className="text-title text-ink">Download DWOM</h2>
         <div className="mt-5 flex flex-wrap gap-4 md:gap-5">
           <GooglePlayBadge />
           <AppStoreBadge />
         </div>
 
-        <div className="mt-8 h-px bg-[#e5e5e5]" />
+        <div className="mt-10 h-px bg-hairline" />
 
         {/* Bottom row */}
         <div className="mt-6 flex flex-col gap-6 md:grid md:grid-cols-3 md:items-center">
-          <p className="order-3 text-[15px] text-[#111] md:order-1 md:text-[17px]">&copy; 2026 DWOM</p>
+          <p className="text-body order-3 text-subtle md:order-1">&copy; 2026 DWOM</p>
 
           <nav className="order-1 flex flex-wrap gap-x-8 gap-y-2 md:order-2 md:gap-x-10">
             {legalLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-[15px] text-[#111] transition-opacity hover:opacity-60 md:text-[17px]"
+                className="text-body text-ink transition-opacity hover:opacity-60"
               >
                 {link.name}
               </Link>
@@ -76,9 +76,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="text-[#111] transition-opacity hover:opacity-60"
+                className="text-ink transition-opacity hover:opacity-60"
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 md:h-7 md:w-7">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
                   {social.icon}
                 </svg>
               </a>

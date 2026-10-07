@@ -4,6 +4,105 @@
   --font-sans: var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Homepage palette: one ink, one secondary grey, one brand-tinted surface, one hairline, one accent */
+@theme {
+  --color-ink: #1d1d1f;
+  --color-subtle: #6e6e73;
+  --color-mist: #fcf1ef;
+  --color-hairline: #e3e1dc;
+  --color-brand: #d4483e;
+}
+
+/* Homepage type scale — use these instead of one-off sizes */
+@utility text-display {
+  text-wrap: balance;
+  font-size: 44px;
+  line-height: 1.04;
+  letter-spacing: -0.032em;
+  font-weight: 600;
+  @media (width >= 48rem) {
+    font-size: 64px;
+  }
+  @media (width >= 64rem) {
+    font-size: 80px;
+  }
+}
+
+@utility text-headline {
+  text-wrap: balance;
+  font-size: 34px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  @media (width >= 48rem) {
+    font-size: 48px;
+  }
+  @media (width >= 64rem) {
+    font-size: 56px;
+  }
+}
+
+/* Longer sentences that need weight without shouting */
+@utility text-statement {
+  text-wrap: balance;
+  font-size: 28px;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  @media (width >= 48rem) {
+    font-size: 36px;
+  }
+  @media (width >= 64rem) {
+    font-size: 40px;
+  }
+}
+
+@utility text-title {
+  text-wrap: balance;
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  @media (width >= 48rem) {
+    font-size: 24px;
+  }
+}
+
+@utility text-lead {
+  text-wrap: pretty;
+  font-size: 19px;
+  line-height: 1.42;
+  letter-spacing: -0.012em;
+  @media (width >= 48rem) {
+    font-size: 21px;
+  }
+}
+
+@utility text-body {
+  text-wrap: pretty;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+}
+
+/* Homepage spacing scale: every section breathes the same amount */
+@utility section-y {
+  padding-block: 96px;
+  @media (width >= 48rem) {
+    padding-block: 144px;
+  }
+}
+
+@utility section-x {
+  padding-inline: 24px;
+  @media (width >= 48rem) {
+    padding-inline: 48px;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 64px;
+  }
+}
+
 :root {
   --color-primary: #e53935;
   --color-primary-dark: #c62828;
