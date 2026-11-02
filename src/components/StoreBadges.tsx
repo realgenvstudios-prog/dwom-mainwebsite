@@ -1,5 +1,5 @@
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.realgenius.dwom';
-const APP_STORE_URL = 'https://apps.apple.com/app/id6759815651';
+export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.realgenius.dwom';
+export const APP_STORE_URL = 'https://apps.apple.com/app/id6759815651';
 
 export function GooglePlayBadge({ className = 'border-black' }: { className?: string }) {
   return (

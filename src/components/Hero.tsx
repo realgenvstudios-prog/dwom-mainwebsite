@@ -3,7 +3,7 @@ import { AppStoreBadge, GooglePlayBadge } from './StoreBadges';
 
 export default function Hero() {
   return (
-    <section id="get-the-app" className="scroll-mt-16 bg-white pt-16 md:scroll-mt-[88px] md:pt-[88px]">
+    <section className="bg-white pt-16 md:pt-[88px]">
       <div className="relative h-[300px] w-full sm:h-auto sm:aspect-[3014/980]">
         <Image
           src="/images/hero-produce.jpg"
@@ -15,7 +15,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1080px] px-6 pt-16 text-center md:pt-24">
+      <div id="get-the-app" className="mx-auto max-w-[1080px] scroll-mt-16 px-6 pt-16 text-center md:scroll-mt-[88px] md:pt-24">
         <h1 className="text-display text-ink">Save on Groceries and Everyday Essentials</h1>
         <p className="text-lead mx-auto mt-6 max-w-[680px] text-subtle md:mt-8">
           Get what you need from the market without making the trip.

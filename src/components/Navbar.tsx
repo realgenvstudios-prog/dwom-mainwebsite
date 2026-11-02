@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import GetAppButton from './GetAppButton';
 
 export default function Navbar() {
   return (
@@ -9,12 +10,7 @@ export default function Navbar() {
           <Image src="/images/logo.png" alt="DWOM" fill className="object-contain" priority />
         </Link>
 
-        <Link
-          href="/#get-the-app"
-          className="rounded-full bg-ink px-5 py-2 text-[15px] text-white transition-colors hover:bg-black md:px-9 md:py-3 md:text-[17px]"
-        >
-          Get the app
-        </Link>
+        <GetAppButton className="rounded-full bg-ink px-5 py-2 text-[15px] text-white transition-colors hover:bg-black md:px-9 md:py-3 md:text-[17px]" />
       </nav>
     </header>
   );
